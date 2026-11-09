@@ -10,3 +10,6 @@ spec:
     - name: web
       port: 8080
       targetPort: 8080
+    - name: metrics
+      port: 9617
+      targetPort: 9617

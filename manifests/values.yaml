@@ -2,6 +2,10 @@ image:
   repository: pihole/pihole
   digest: sha256:f7d1be836e3bc608b56d82fc9904f5a831cdfbc0dc9c6d58f94e4c985c70038b # 2026.07.2
 
+exporter:
+  repository: ghcr.io/mosher-labs/pihole6-exporter
+  digest: sha256:aa487c8ecdb6b334ef68b1bc5fe4b95037571e7da216399d41ec1d13aff93802 # 1.1.30
+
 verify:
   image:
     repository: alpine
