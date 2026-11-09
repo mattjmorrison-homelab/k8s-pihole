@@ -37,3 +37,11 @@ setup() {
   ' -)
   [ "$token" = "" ]
 }
+
+@test "the pihole pod is pinned to amd64 nodes, since the exporter sidecar has no arm64 build" {
+  arch=$(echo "$RENDERED" | yq eval-all '
+    select(.kind == "Deployment" and .metadata.name == "pihole") |
+    .spec.template.spec.nodeSelector["kubernetes.io/arch"]
+  ' -)
+  [ "$arch" = "amd64" ]
+}

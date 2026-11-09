@@ -19,6 +19,8 @@ spec:
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: pihole
           image: "{{ .Values.image.repository }}@{{ .Values.image.digest }}"
