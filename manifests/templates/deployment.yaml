@@ -52,6 +52,23 @@ spec:
             - name: local-dns
               mountPath: /etc/dnsmasq.d/05-local-dns.conf
               subPath: 05-local-dns.conf
+        - name: pihole-exporter
+          image: "{{ .Values.exporter.repository }}@{{ .Values.exporter.digest }}"
+          args:
+            - --host
+            - localhost
+            - --pihole-port
+            - "8080"
+            - --protocol
+            - http
+            - --port
+            - "9617"
+          env:
+            - name: PIHOLE_API_TOKEN
+              value: ""
+          ports:
+            - containerPort: 9617
+              protocol: TCP
       volumes:
         - name: pihole-config
           persistentVolumeClaim:
